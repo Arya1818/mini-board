@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>mini-board</display-name>
+  <welcome-file-list>
+
+    <welcome-file>index.jsp</welcome-file>
+</welcome-file-list>
+
+<servlet>
+	<servlet-name>URIController</servlet-name>  <!-- 걍이름. 밑에servlet-class주소에 있는 URIController와 이름 같을 필요는 없음-->
+	<servlet-class>com.board.mini.controller.URIController</servlet-class>  
+</servlet>
+<servlet-mapping>
+	<servlet-name>URIController</servlet-name> <!-- servlet-name은 위 아래 맞춰야함-->
+	<url-pattern>/views/*</url-pattern>
+</servlet-mapping>
+
+
+<servlet>
+	<servlet-name>BDIController</servlet-name>
+	<servlet-class>com.board.mini.controller.BDIController</servlet-class>
+</servlet>
+<servlet-mapping>
+	<servlet-name>BDIController</servlet-name>
+	<url-pattern>/abc</url-pattern>
+</servlet-mapping>
+
+
+
+
+
+
+</web-app>
+
+<!-- 내가 view라고만 해도 서블릿 클래스 주소를 불러와줘.   -->
