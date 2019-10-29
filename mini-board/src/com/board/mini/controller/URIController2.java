@@ -1,4 +1,4 @@
-package com.board.mini.controller;
+package com.board.mini.controller; //컨트롤러 서블릿의 구현방법
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -10,7 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-public class URIController extends HttpServlet { //httpServlet접근제어자 protected
+public class URIController2 extends HttpServlet { //httpServlet접근제어자 protected
+	//1단계.HTTP요청 받음
 	private static final long serialVersionUID = 1L;
   
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -19,12 +20,13 @@ public class URIController extends HttpServlet { //httpServlet접근제어자 pr
 		PrintWriter out = response.getWriter() ; // response에서 get해옴 , 응답객체에게 쓸것조 ㅁ가져와라! 그게 PrintWriter!! 
 		out.println("나는 겟방식일때 호출되는 메소드임~"); //디폴트인 utf-8이아닌걸 바라봄, out객체를 통해 response.. 응답객체..
 		
-//		String uri ="/WEB-INF" + request.getRequestURI() + ".jsp";
-//		out.println("<br>니가 나한테 요청한 페이지: " + uri);
+		String uri ="/WEB-INF" + request.getRequestURI() + ".jsp";
+		out.println("<br>니가 나한테 요청한 페이지: " + uri);
 //		out.println("<br>니가 보낸 a값: " + request.getParameter("a"));
 //		
 //		request.setAttribute("test", "나나나"); //스트링,스트링
 //		
+		//2단계. request객체로부터 사용자의 요청을 분석
 		RequestDispatcher rd = request.getRequestDispatcher(uri); //Request에 대한 통로 관리자,기관사, 너가 나한테 요청한 uri가 뭔지물어봄.
 		rd.forward(request, response); //request, response를 그대로 담아서 보낸다
 		
@@ -40,14 +42,8 @@ public class URIController extends HttpServlet { //httpServlet접근제어자 pr
 	}
 }
 /*
- *1단계.http요청을 받는다
- *2단계.요청분석(request객체로부터 사용자의 요청 분석하는 코드)
- *3단계.모델을 사용하여 요청한 기능 수행(사용자의 요청에 따라 알맞은 코드)
- *4단계. request나 session에 처리 결과를 저장(request.setAttribute("result",resultObject);이런형태의코드
- *5단계.RequestDispatcher을 사용하여 알맞은 뷰로 포워딩
- *
  * protected 상속과 관련 
  * is has,,  do 하다 doGet
  * 우리는 톰캣한테 "사용자가 view를 보고 싶다는 요청이 들어왔을 때 메모리 만들고 함수 호출해"라고 명령만 내리면 됨!
- * uri controller 는 얘를 웹 안에 넣는 중개자 역할만 함 - 내가보낸 키밸류 값을 먹을 순 없음 그래서 forward할 때 request, response를 보냄.
+ * uri controller 는 얘를 웹 안에 넣는 중개자 역할만 함 - 내가보낸 키밸류 값을 먹을 순 없음 그래서 foward할 때 request, response를 보냄.
  */
