@@ -12,30 +12,19 @@ import javax.servlet.http.HttpServletResponse;
 
 public class URIController extends HttpServlet { //httpServlet접근제어자 protected
 	private static final long serialVersionUID = 1L;
-  
+	private static final String PREFIX = "/WEB-INF"; //prefix접두사, 스프링할때 쓰는단어
+	private static final String SUFFIX = ".jsp"; //suffix접미사
+	
+	private static String getForwardURI(HttpServletRequest request) {
+		return PREFIX + request.getRequestURI() + SUFFIX;
+	}
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setCharacterEncoding("utf-8");
-		response.setContentType("text/html;charset=utf-8");
-		PrintWriter out = response.getWriter() ; // response에서 get해옴 , 응답객체에게 쓸것조 ㅁ가져와라! 그게 PrintWriter!! 
-		out.println("나는 겟방식일때 호출되는 메소드임~"); //디폴트인 utf-8이아닌걸 바라봄, out객체를 통해 response.. 응답객체..
-		
-//		String uri ="/WEB-INF" + request.getRequestURI() + ".jsp";
-//		out.println("<br>니가 나한테 요청한 페이지: " + uri);
-//		out.println("<br>니가 보낸 a값: " + request.getParameter("a"));
-//		
-//		request.setAttribute("test", "나나나"); //스트링,스트링
-//		
-		RequestDispatcher rd = request.getRequestDispatcher(uri); //Request에 대한 통로 관리자,기관사, 너가 나한테 요청한 uri가 뭔지물어봄.
+		RequestDispatcher rd = request.getRequestDispatcher(getForwardURI(request)); 
 		rd.forward(request, response); //request, response를 그대로 담아서 보낸다
 		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setCharacterEncoding("utf-8");
-		response.setContentType("text/html;charset=utf-8");
-		PrintWriter out = response.getWriter(); 
-		out.println("나는 포스트방식일때 호출되는 메소드임~");
-		
 		doGet(request, response);
 	}
 }
@@ -44,7 +33,7 @@ public class URIController extends HttpServlet { //httpServlet접근제어자 pr
  *2단계.요청분석(request객체로부터 사용자의 요청 분석하는 코드)
  *3단계.모델을 사용하여 요청한 기능 수행(사용자의 요청에 따라 알맞은 코드)
  *4단계. request나 session에 처리 결과를 저장(request.setAttribute("result",resultObject);이런형태의코드
- *5단계.RequestDispatcher을 사용하여 알맞은 뷰로 포워딩
+ *5단계.RequestDispatcher을 사용하여 알맞은 뷰로 포워딩/통로관리자
  *
  * protected 상속과 관련 
  * is has,,  do 하다 doGet

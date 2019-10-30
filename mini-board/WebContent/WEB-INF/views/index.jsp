@@ -11,9 +11,8 @@
 </head>
 <body>
 처음으로만드는 웹 게시판
-
-이프로젝트의 절대 경로의 시작점: <%=rPath %><br>
-<a href="<%=rPath %>/2.jsp">2.jsp로이동</a>
+<a href="/views/user/login">로그인</a>
+<a href="/views/user/signup">회원가입</a>
 
 </body>
 </html>

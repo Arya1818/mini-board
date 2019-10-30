@@ -7,12 +7,28 @@
 <title>Insert title here</title>
 </head>
 <body>
+<form method="post" action="/user/login">
+<table border="1" >
+	<tr>
+		<th>아이디</th>
+		<td><input type="text" name="uiId" id="uiId"></td>
+	</tr>
+	<tr>
+		<th>비밀번호</th>
+		<td><input type="password" name="uiPwd" id="uiPwd"></td>
+	</tr>
+	<tr>
+		<th colspan="2"><button>로그인</button></th>
+	</tr>
+</table>
+</form>
+
+<!-- 
 <%
 //String test = request.getAttribute("test"); //에러나는 이유? 넘겨받은 test의 value는  object인데 string에 어떻게 넣니? 
 String test = (String)request.getAttribute("test");	//형변환(캐스팅)
 		
 %>
-<%=test %>
-난 로그인화면 만들 예정
+ -->
 </body>
 </html>

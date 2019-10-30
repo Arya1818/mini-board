@@ -3,11 +3,11 @@
   <display-name>mini-board</display-name>
   <welcome-file-list>
 
-    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>/WEB-INF/views/index.jsp</welcome-file>
 </welcome-file-list>
 
 <servlet>
-	<servlet-name>URIController</servlet-name>  <!-- 걍이름. 밑에servlet-class주소에 있는 URIController와 이름 같을 필요는 없음-->
+	<servlet-name>URIController</servlet-name>  <!-- 걍이름. 밑에 servlet-class주소에 있는 URIController와 이름 같을 필요는 없음-->
 	<servlet-class>com.board.mini.controller.URIController</servlet-class>  
 </servlet>
 <servlet-mapping>
@@ -15,17 +15,14 @@
 	<url-pattern>/views/*</url-pattern>
 </servlet-mapping>
 
-
 <servlet>
-	<servlet-name>BDIController</servlet-name>
-	<servlet-class>com.board.mini.controller.BDIController</servlet-class>
+	<servlet-name>UserController</servlet-name>  
+	<servlet-class>com.board.mini.controller.UserController</servlet-class>  
 </servlet>
 <servlet-mapping>
-	<servlet-name>BDIController</servlet-name>
-	<url-pattern>/abc</url-pattern>
+	<servlet-name>UserController</servlet-name> 
+	<url-pattern>/user/*</url-pattern>
 </servlet-mapping>
-
-
 
 
 
