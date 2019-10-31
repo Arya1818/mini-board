@@ -26,12 +26,12 @@ if(session.getAttribute("user")==null){
 
 	</tr>
 <%
-	if(request.getAttribute("list")==null){
+	if(request.getAttribute("boardList")==null){
 		out.println("<tr><td colspan=\"4\">게시물이없습니다.</td></tr>");
 		
 	}else{
 		List<Map<String,String>> boardList =
-				(List<Map<String,String>>) request.getAttribute("list");
+				(List<Map<String,String>>) request.getAttribute("boardList");
 		for(Map<String,String> board:boardList){
 %>
 	<tr>

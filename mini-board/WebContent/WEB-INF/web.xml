@@ -25,11 +25,11 @@
 </servlet-mapping>
 
 <servlet>
-	<servlet-name>boardController</servlet-name>  
-	<servlet-class>com.board.mini.controller.boardController</servlet-class>  
+	<servlet-name>BoardController</servlet-name>  
+	<servlet-class>com.board.mini.controller.BoardController</servlet-class>  
 </servlet>
 <servlet-mapping>
-	<servlet-name>boardController</servlet-name> 
+	<servlet-name>BoardController</servlet-name> 
 	<url-pattern>/board/*</url-pattern>
 </servlet-mapping>
 

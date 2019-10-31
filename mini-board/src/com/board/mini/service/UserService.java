@@ -23,8 +23,8 @@ public class UserService {
 
 		try {
 			PreparedStatement ps = dbe.prepared(con, sql);
-			ps.setString(1, uiId);
-			ps.setString(2, uiPwd);
+			ps.setString(1, id);
+			ps.setString(2, pwd);
 			ResultSet rs = dbe.executeQuery();
 			if (rs.next()) { // 아이디, 비번이 올바르게 동작했을 때 true
 				Map<String, Object> user = new HashMap<>(); // object로 한 이유, rs.get할때 다 담으려고

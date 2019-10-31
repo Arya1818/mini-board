@@ -1,6 +1,7 @@
 <%@page import="java.util.Map"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@include file="/WEB-INF/views/common/header.jspf" %>
 <%
 if(session.getAttribute("user")==null){
 	response.sendRedirect("/");
@@ -21,7 +22,7 @@ Map<String,Object> user = (Map<String,Object>)session.getAttribute("user");
 <title>Insert title here</title>
 </head>
 <body>
-<form method="post" action="/views/board/insert" onsubmit="return checkForm()">
+<form method="post" action="/board/insert" onsubmit="return checkForm()">
 	<table border="1">
 		<tr>
 			<th>제목</th>
@@ -32,7 +33,11 @@ Map<String,Object> user = (Map<String,Object>)session.getAttribute("user");
 			<td><input type="text" name="biContent" id="biContent"></td> 
 		</tr>
 		<tr>
-			<th colspan="2"><button>글쓰기</button></th>
+			<th>글쓴이</th>
+			<td><%=user.get("uiName") %></td> 
+		</tr>
+		<tr>
+			<th colspan="2"><button>글저장</button></th>
 		</tr>
 	</table>
 </form>

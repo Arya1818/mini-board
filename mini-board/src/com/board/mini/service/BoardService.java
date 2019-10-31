@@ -38,7 +38,6 @@ public class BoardService {
 			}
 			return boardList;
 		} catch (SQLException e) {
-
 			e.printStackTrace();
 		} finally {
 			dbe.closeAll();
@@ -50,7 +49,7 @@ public class BoardService {
 	public int insertBoard(Map<String, String> board) {
 		Connection con = DBCon.getCon();
 		DBExecutor dbe = new DBExecutor();
-		String sql = "insert into board_info(bi_num,bi_title,bi_content,ui_num,credat,cretim,modat,motim)";
+		String sql = "insert into board_info(bi_num,bi_title,bi_content,ui_num,credat,cretim,modat,modtim)";
 		sql += "values(seq_bi_num.nextval,?,?,?,TO_CHAR(SYSDATE,'YYYYMMDD'),TO_CHAR(SYSDATE,'HH24MISS'),TO_CHAR(SYSDATE,'YYYYMMDD'),TO_CHAR(SYSDATE,'HH24MISS')";
 
 		try {
