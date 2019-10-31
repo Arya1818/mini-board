@@ -14,15 +14,17 @@ import com.board.mini.common.DBExecutor;
 
 public class UserService {
 
-	public Map<String, Object> doLogin(String id, String pwd) {
+	public Map<String, Object> doLogin(String uiId, String uiPwd) {
+		
 		Connection con = DBCon.getCon(); // 원래는 dao에서 해야함
 		DBExecutor dbe = new DBExecutor();
-		String sql = "select * from user_info where id=? and pwd=?";
+
+		String sql = "select * from user_info where ui_id=? and ui_pwd=?";
 
 		try {
 			PreparedStatement ps = dbe.prepared(con, sql);
-			ps.setString(1, id);
-			ps.setString(2, pwd);
+			ps.setString(1, uiId);
+			ps.setString(2, uiPwd);
 			ResultSet rs = dbe.executeQuery();
 			if (rs.next()) { // 아이디, 비번이 올바르게 동작했을 때 true
 				Map<String, Object> user = new HashMap<>(); // object로 한 이유, rs.get할때 다 담으려고
