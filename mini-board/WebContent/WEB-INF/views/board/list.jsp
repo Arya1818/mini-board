@@ -4,10 +4,18 @@
     pageEncoding="UTF-8"%>
 <%
 if(session.getAttribute("user")==null){
-	response.sendRedirect("/"); //요청을 새로 만듦 , url바뀜,
+	response.sendRedirect("/");
 }
-
-%>    
+if(request.getAttribute("msg")!=null){
+%>
+<script>
+	alert('<%=request.getAttribute("msg")%>');
+</script>
+<%
+}
+Map<String,Object> user = (Map<String,Object>)session.getAttribute("user");
+%>
+ 
     
 <!DOCTYPE html>
 <html>
@@ -26,12 +34,12 @@ if(session.getAttribute("user")==null){
 
 	</tr>
 <%
-	if(request.getAttribute("boardList")==null){
+	if(request.getAttribute("list")==null){
 		out.println("<tr><td colspan=\"4\">게시물이없습니다.</td></tr>");
 		
 	}else{
 		List<Map<String,String>> boardList =
-				(List<Map<String,String>>) request.getAttribute("boardList");
+				(List<Map<String,String>>) request.getAttribute("list");
 		for(Map<String,String> board:boardList){
 %>
 	<tr>

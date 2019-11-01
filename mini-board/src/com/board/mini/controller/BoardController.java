@@ -20,11 +20,11 @@ public class BoardController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String uri = request.getRequestURI();
-		String cmd = uri.substring(7);
+		String cmd = uri.substring(7); //list
 		BoardService bs = new BoardService();
 		String path = "/views/board/list";
 		if ("list".equals(cmd)) {
-			request.setAttribute("boardList", bs.getBoardList());
+			request.setAttribute("list", bs.getBoardList());
 		}
 		RequestDispatcher rd = request.getRequestDispatcher(path);
 		rd.forward(request, response);
@@ -35,7 +35,7 @@ public class BoardController extends HttpServlet {
 		String uri = request.getRequestURI();
 		String cmd = uri.substring(7);
 		BoardService bs = new BoardService();
-		String path = "/views/board/list";
+		String path = "/board/list";
 		String msg = "게시물이 저장되었습니다.";
 		if ("insert".equals(cmd)) {
 			Map<String, String> board = new HashMap<>();
@@ -51,7 +51,9 @@ public class BoardController extends HttpServlet {
 			}
 
 		}
-		RequestDispatcher rd = request.getRequestDispatcher(path);
+		request.setAttribute("url", path);
+		request.setAttribute("msg", msg);
+		RequestDispatcher rd = request.getRequestDispatcher("/views/msg");
 		rd.forward(request, response);
 	}
 

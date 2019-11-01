@@ -18,7 +18,7 @@ if(session.getAttribute("user")!=null){
 	Map<String,Object> user = (Map<String,Object>)session.getAttribute("user");
 	out.print(user.get("uiName") + "님 반갑습니다.<br>");
 	out.print("<a href=\"/views/user/logout\">로그아웃</a>");
-	out.print("<a href=\"/views/board/list\">게시판</a>");
+	out.print("<a href=\"/board/list\">게시판</a>");
 }else{
 %>
 <a href="/views/user/login">로그인</a>
